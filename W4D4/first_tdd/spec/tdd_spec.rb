@@ -25,5 +25,20 @@ describe Array do
     it "returns an empty array when no pairs add to 0" do
       expect([1,2,3,4].two_sum).to eq([])
     end
+    it "returns pairs that sum to zero" do 
+      expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+    end
+    it "sorts pairs smallest to largest" do 
+      expect([1, -2, 2, 0, -1].two_sum).to eq([[0, 4], [1, 2]])
+    end
+  end
+end
+
+describe "my_transpose" do 
+  it "returns an array of the same length" do 
+    expect(my_transpose([1]).length).to eq(1)
+  end
+  it "rotates the matrix 270 degrees" do 
+    expect(my_transpose([[0, 1, 2], [3, 4, 5], [6, 7, 8]])).to eq([[0, 3, 6], [1, 4, 7], [2, 5, 8]])
   end
 end

@@ -8,6 +8,24 @@ end
 class Array
   def two_sum
     result = []
+    self.each_with_index do |el_1, i_1|
+      self.each_with_index do |el_2, i_2|
+        if i_1 < i_2 
+          result << [i_1, i_2] if el_1 + el_2 == 0
+        end
+      end
+    end
     return result
   end
+end
+
+def my_transpose(matrix)
+  return matrix if matrix.length == 1
+  new_arr = Array.new(matrix.length) { Array.new (matrix.length) }
+  matrix.each_with_index do |el_1, i_1|
+    el_1.each_with_index do |el_2, i_2|
+      new_arr[i_2][i_1] = el_2
+    end
+  end
+  new_arr
 end
