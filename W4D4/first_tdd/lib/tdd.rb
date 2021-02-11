@@ -29,3 +29,9 @@ def my_transpose(matrix)
   end
   new_arr
 end
+
+def stock_picker(arr)
+  (0...arr.length).each do |i|
+    raise "array must contain stonk prices" unless arr[i].is_a?(Integer)
+  end
+end

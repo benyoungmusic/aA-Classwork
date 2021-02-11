@@ -42,3 +42,17 @@ describe "my_transpose" do
     expect(my_transpose([[0, 1, 2], [3, 4, 5], [6, 7, 8]])).to eq([[0, 3, 6], [1, 4, 7], [2, 5, 8]])
   end
 end
+
+describe "stock_picker" do
+  it "should accept an array of stock prices" do
+    expect{stock_picker([1,2,3])}.to_not raise_error
+    expect{stock_picker([1,2,"g"])}.to raise_error("array must contain stonk prices")
+  end
+  it "should return a pair of days in chronological order" do
+    expect([100, 1]).to eq([0, 1])
+  end
+  it "should return the most profitable pair of days as an array" do
+    expect(stock_picker([20, 15, 45, 100, 5, 95])).to eq([4, 5])
+  end
+
+end
