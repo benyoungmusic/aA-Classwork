@@ -49,8 +49,15 @@ describe "stock_picker" do
     expect{stock_picker([1,2,"g"])}.to raise_error("array must contain stonk prices")
   end
   it "should return a pair of days in chronological order" do
-    expect([100, 1]).to eq([0, 1])
+    expect(stock_picker([100, 1])).to eq([0, 1])
   end
+  it "should contain at least two days" do 
+    expect{stock_picker([1])}.to raise_error("Please input at least two days")
+  end
+  it "should not be fooled by a relative maximum" do 
+    expect(stock_picker([15, 20, 45, 100, 5, 95])).to eq([4, 5])
+  end
+
   it "should return the most profitable pair of days as an array" do
     expect(stock_picker([20, 15, 45, 100, 5, 95])).to eq([4, 5])
   end

@@ -34,4 +34,19 @@ def stock_picker(arr)
   (0...arr.length).each do |i|
     raise "array must contain stonk prices" unless arr[i].is_a?(Integer)
   end
+  raise "Please input at least two days" if arr.length < 2
+  
+  cur_max_prof = arr[1] - arr[0]
+  cur_max_days = [0, 1]
+
+  arr.each_with_index do |el_1, i_1|
+    arr.each_with_index do |el_2, i_2|
+      if i_2 > i_1 && (el_2 - el_1) > cur_max_prof
+        cur_max_prof = (el_2 - el_1) 
+        cur_max_days = [i_1, i_2]
+      end
+    end
+  end
+  cur_max_days
+
 end
