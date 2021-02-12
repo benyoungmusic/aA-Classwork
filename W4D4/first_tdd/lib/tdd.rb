@@ -50,3 +50,15 @@ def stock_picker(arr)
   cur_max_days
 
 end
+
+class TowersOfHanoi
+  attr_reader :piles, :num_discs
+  def initialize(num_discs)
+    @num_discs = num_discs
+    @piles = Array.new(3) {Array.new}
+    (1..@num_discs).each do |num|
+      @piles.unshift(num)
+    end
+  end
+
+end

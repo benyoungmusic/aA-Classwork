@@ -63,3 +63,21 @@ describe "stock_picker" do
   end
 
 end
+
+describe TowersOfHanoi do
+  subject(:game) {TowersOfHanoi.new(5)}
+  describe "#initialize" do
+    it "should set up 3 piles" do
+      expect(game.piles.length).to eq(3)
+    end
+    it "all discs should be stacked in first pile" do
+      expect(game.piles[0].length).to eq(5)
+    end
+    it "should accept the number discs as an argument" do
+      expect(game.num_discs).to eq(5)
+    end
+  end
+end
+
+# it "all discs should be stacked in order" do
+# end
