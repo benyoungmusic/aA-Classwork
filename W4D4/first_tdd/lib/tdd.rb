@@ -53,12 +53,21 @@ end
 
 class TowersOfHanoi
   attr_reader :piles, :num_discs
+  
   def initialize(num_discs)
     @num_discs = num_discs
     @piles = Array.new(3) {Array.new}
     (1..@num_discs).each do |num|
-      @piles.unshift(num)
+      @piles[0].unshift(num)
     end
+  end
+
+  def user_input
+    gets.chomp 
+  end
+
+  def move(start_stop)
+    @piles[start_stop[1]].push(@piles[start_stop[0]].pop)
   end
 
 end

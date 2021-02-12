@@ -77,6 +77,26 @@ describe TowersOfHanoi do
       expect(game.num_discs).to eq(5)
     end
   end
+
+  describe "#move" do 
+    
+    before(:each)  { game.move([0, 1]) }
+    it "should raise an error if invalid response" do 
+      expect{move([0, 4])}.to raise_error("Invalid Response")
+    end
+    
+    it "should move a piece to the front of a pile" do 
+      expect(game.piles[1].length).to eq(1) 
+    end
+
+    context "when moving pieces" do
+      before(:each) {game.piles = [[5], [4, 3], [2, 1]]}
+      it "should raise error if end_pos.last is smaller than start_pos.last" do 
+        expect{game.move([0, 1])}.to raise_error("End disk is smaller than start disk")  
+      end
+    end
+
+  end
 end
 
 # it "all discs should be stacked in order" do
