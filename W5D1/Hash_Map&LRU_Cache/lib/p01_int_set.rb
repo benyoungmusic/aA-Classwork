@@ -4,7 +4,7 @@
 
 class MaxIntSet
   def initialize(max)
-    @store = Array.new(max)
+    @store = Array.new(max,false)
   end
 
   def insert(num)
@@ -13,14 +13,17 @@ class MaxIntSet
   end
 
   def remove(num)
+    @store[num] = false
   end
 
   def include?(num)
     @store[num] == true
   end
 
+  
+  attr_accessor :store
+
   private
-  attr_accessor :set
   def is_valid?(num)
   end
 
@@ -32,16 +35,30 @@ end
 class IntSet
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
+    @num_buckets = num_buckets
   end
 
   def insert(num)
+    mod = num % num_buckets
+
+    @store[mod] << num 
   end
 
   def remove(num)
+    mod = num % num_buckets
+
+    if self.include?(num)
+      @store[mod].delete(num)
+    end
   end
 
   def include?(num)
+    mod = num % num_buckets
+
+    @store[mod].include?(num)
   end
+
+
 
   private
 
