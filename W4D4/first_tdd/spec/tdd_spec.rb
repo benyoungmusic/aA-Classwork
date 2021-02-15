@@ -82,7 +82,7 @@ describe TowersOfHanoi do
     
     before(:each)  { game.move([0, 1]) }
     it "should raise an error if invalid response" do 
-      expect{move([0, 4])}.to raise_error("Invalid Response")
+      expect{game.move([0, 4])}.to raise_error("Invalid Response")
     end
     
     it "should move a piece to the front of a pile" do 
@@ -90,7 +90,8 @@ describe TowersOfHanoi do
     end
 
     context "when moving pieces" do
-      before(:each) {game.piles = [[5], [4, 3], [2, 1]]}
+      let (:piles) { double("piles" => [[5], [4, 3], [2, 1]]) }
+      # before(:each) {game.piles = [[5], [4, 3], [2, 1]]}
       it "should raise error if end_pos.last is smaller than start_pos.last" do 
         expect{game.move([0, 1])}.to raise_error("End disk is smaller than start disk")  
       end
