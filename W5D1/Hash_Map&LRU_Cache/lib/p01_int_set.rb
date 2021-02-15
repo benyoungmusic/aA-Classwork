@@ -80,12 +80,25 @@ class ResizingIntSet
   end
 
   def insert(num)
+    # if @count > @store.length
+
+    mod = num % num_buckets
+    if self.include?(num) == false
+      @store[mod] << num
+      @count += 1
+    end
   end
 
   def remove(num)
+    if self.include?(num)
+      @store -= [[num]]
+      @count -= 1
+    end
   end
 
   def include?(num)
+    mod = num % num_buckets
+    @store[mod].include?(num)
   end
 
   private
