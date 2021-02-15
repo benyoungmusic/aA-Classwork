@@ -1,18 +1,26 @@
+    # [1, 3, 7, 6]
+    # [0,1,2,3,4,5,6]
+    # [false, true, false, true, false]
+
 class MaxIntSet
   def initialize(max)
+    @store = Array.new(max)
   end
 
   def insert(num)
+    raise "Out of bounds" if num > @store.length || num < 0
+    @store[num] = true
   end
 
   def remove(num)
   end
 
   def include?(num)
+    @store[num] == true
   end
 
   private
-
+  attr_accessor :set
   def is_valid?(num)
   end
 
