@@ -90,7 +90,7 @@ class ResizingIntSet
     end
 
     if @count == @store.length
-      p @store.length
+      p @store
       p @count
        resize! 
     end
@@ -120,6 +120,11 @@ class ResizingIntSet
 
   def resize!
     arr = []
+    buckets = []
+    i = 0
+    double = @store.length * 2
+
+    
 
     @store.each() do |bucket|
       if bucket != []
@@ -127,12 +132,23 @@ class ResizingIntSet
       end
     end
 
-    @num_buckets = @num_buckets * 2
-    @store = Array.new(@num_buckets) { Array.new }
-    
-    arr.each() do |el|
-      self.insert(el)
+    while buckets.length < double
+      buckets << Array.new
+      i += 1
     end
+
+    for i in(0...buckets.length)
+      break if arr[i].nil?
+      mod = arr[i] % buckets.length
+      buckets[mod] += [arr[i]]
+    end
+    @store = buckets
+    # @num_buckets = @num_buckets * 2
+    # @store = Array.new(@num_buckets) { Array.new }
+    
+    # arr.each() do |el|
+    #   self.insert(el)
+    # end
 
 
   end
