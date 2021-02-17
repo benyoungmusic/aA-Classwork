@@ -49,15 +49,6 @@ def high_population_gdps
   SQL
 end
 
-# == Schema Information
-#
-# Table name: countries
-#
-#  name        :string       not null, primary key
-#  continent   :string
-#  area        :integer
-#  population  :integer
-#  gdp         :integer
 
 def population_in_millions
   # Show the name and population in millions for the countries with continent
@@ -87,8 +78,24 @@ def name_and_population
   SQL
 end
 
+# == Schema Information
+#
+# Table name: countries
+#
+#  name        :string       not null, primary key
+#  continent   :string
+#  area        :integer
+#  population  :integer
+#  gdp         :integer
+
 def united_we_stand
   # Show the countries that have a name that includes the word 'United'
   execute(<<-SQL)
+  SELECT 
+    name
+  FROM
+    countries
+  WHERE
+    name LIKE '%United%'
   SQL
 end
