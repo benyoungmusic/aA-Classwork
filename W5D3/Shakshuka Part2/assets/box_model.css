@@ -84,8 +84,8 @@ select {
   margin-right: 15px;
 }
 
-form label:last-of-type {
-  /* display: inline; */
+label {
+  display: block;
   width: 500px;
 }
 
