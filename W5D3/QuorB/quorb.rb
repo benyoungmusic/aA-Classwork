@@ -101,6 +101,69 @@ class Question_follow
     end
 
 
+    def initialize(options)
+        @id = options['id']
+        @user_id = options['user_id']
+        @question_id = options['question_id']
+    end
+
+end
+
+class Reply
+    attr_accessor :body, :user_id, :question_id, :parent_id
+    attr_reader :id
+
+    def self.find_by_title(title)
+        reply = QuestionsDatabase.instance.execute(<<-SQL, title)
+            SELECT
+                *
+            FROM
+                replies
+            WHERE
+                title = ?
+        SQL
+        return nil unless reply.length > 0
+        Reply.new(reply.first)
+    end
+
+    def self.all
+        data = QuestionsDatabase.instance.execute("SELECT * FROM replies")
+        data.map { |datum| Reply.new(datum) }
+    end
+
+    def initialize(options)
+        @id = options['id']
+        @body = options['body']
+        @question_id = options['question_id']
+        @user_id = options['user_id']
+        @parent_id = options['parent_id']
+    end
+
+end
+
+class Question_like
+    attr_accessor :user_id, :question_id
+    attr_reader :id
+
+    def self.find_by_question(question_id)
+        question_like = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+            SELECT
+                *
+            FROM
+                question_likes
+            JOIN
+                question_likes ON question_likes.question_id = questions.id
+            WHERE
+                question_id = ?
+        SQL
+        return nil unless question_like.length > 0
+        Question_like.new(question_like.first)
+    end
+
+    def self.all
+        data = QuestionsDatabase.instance.execute("SELECT * FROM question_likes")
+        data.map { |datum| Question_like.new(datum) }
+    end
 
 
     def initialize(options)
