@@ -35,7 +35,7 @@ DROP TABLE if EXISTS users;
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     fname VARCHAR NOT NULL,
-    lname VARCHAR NOT NULL,
+    lname VARCHAR NOT NULL
 );
 
 CREATE TABLE questions (
@@ -52,7 +52,7 @@ CREATE TABLE question_follows (
     question_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
 
-    FOREIGN KEY (question_id) REFERENCES questions(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -63,8 +63,8 @@ CREATE TABLE replies (
     user_id INTEGER NOT NULL,
     body TEXT NOT NULL,
 
-    FOREIGN KEY (question_id) REFERENCES questions(id)
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (parent_id) REFERENCES replies(id)
 );
 
@@ -73,6 +73,32 @@ CREATE TABLE question_likes (
     question_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
 
-    FOREIGN KEY (question_id) REFERENCES questions(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+INSERT INTO
+    users (fname, lname)
+    VALUES
+    ('Ben', 'Young'),
+    ('Mike','Lyons');
+
+INSERT INTO
+    questions (title, body, user_id)
+    VALUES
+    ('What is CSS', 'I suck at CSS', (
+        SELECT
+        id
+        FROM
+        users
+        WHERE
+        lname = 'Lyons'
+    )),
+        ('What is the meaning of Life', 'Is it 42', (
+        SELECT
+        id
+        FROM
+        users
+        WHERE
+        lname = 'Young'
+    ));
