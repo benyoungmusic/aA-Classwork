@@ -3,5 +3,19 @@ class UsersController < ApplicationController
     
         render plain: "I'm in the index action!"
     end
+
+    def create
+        render json: params
+    end
+
+    def show
+        render json:params
+    end
+
+    # def delete
+    # end
+
+    # def update
+    # end
     
 end
