@@ -6,7 +6,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        render json: params
+        user = User.new(params.require(:user).permit(:user_attributes_here))
+        user.save!
+        render json: user
+
     end
 
     def show
@@ -19,6 +22,6 @@ class UsersController < ApplicationController
     # def update
     # end
 
-    
+
 
 end 
