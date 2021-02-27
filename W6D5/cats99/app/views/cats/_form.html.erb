@@ -1,0 +1,43 @@
+
+<% if action == 'new' %>
+  <% action_url = 'cat_url'%>
+<% else  %>
+  <% action_url = 'cat_url(cat)'%>
+<% end %>
+
+<form action="<%= cats_url %>" method="post">
+    <input type="hidden" name="_method" value = "patch">
+    <label>
+        Name
+        <input type="text" name="cat[name]" value="<%= cat.name %>">
+    </label>
+
+    <label>
+        Sex
+        F<input type="radio" name="cat[sex]" value = "F" <%= cat.sex == "F" ? "checked" : ""%> >
+        M<input type="radio" name="cat[sex]" value = "M" <%= cat.sex == "M" ? "checked" : ""%>>
+    </label>
+
+    <label>
+        Color
+        <select name="cat[color]" >
+        <option disabled>--please select a color--</option>
+            <% Cat::COLORS.each do |color|%>
+                <option value="<%= color%>" <%= cat.color == color ? "selected" : ""%> > <%= color%> </option>
+            <% end %>
+        </select>
+    </label>
+
+    <label >
+        Birth Date 
+        <input type="date" name="cat[birth_date]" value="<%= cat.birth_date %>">
+    </label>
+
+    <label >
+        Description
+        <textarea name="cat[description]"> <%= cat.description %> </textarea>
+    </label>
+
+    <input type="submit" value="Edit this cat!">
+
+</form>

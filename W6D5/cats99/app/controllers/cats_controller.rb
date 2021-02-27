@@ -13,9 +13,18 @@ class CatsController < ApplicationController
   end
 
   def new
-    @cat = Cat.new(cat_params)
+    @cat = Cat.new
     render :new
   end
+
+
+  def edit 
+    @cat = Cat.find_by(id: params[:id])
+    render :edit 
+  end
+
+
+
 
   private
 
