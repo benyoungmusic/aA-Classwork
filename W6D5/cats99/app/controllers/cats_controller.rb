@@ -12,6 +12,11 @@ class CatsController < ApplicationController
 
   end
 
+  def new
+    @cat = Cat.new(cat_params)
+    render :new
+  end
+
   private
 
   def cat_params 
