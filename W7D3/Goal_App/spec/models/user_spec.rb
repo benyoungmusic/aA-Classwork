@@ -27,11 +27,30 @@ RSpec.describe User, type: :model do
   end
 
 
-  describe "::find_by_user_credentials" do
+  describe "#is_password?" do
     let(:test_user) { User.create(username: 'Test', password: 'test123') }
+
+    it "should not be saved to the database" do
+      expect(test_user.password).not_to eq('test123')
+    end
+    
+    it "should encrypt password" do
+      test_user.is_password?('test123')
+
+      expect(BCrypt::Password).to receive(:new).with('test123')
+    end
+
     
   end
 
+  describe "password=" do
+    it "should generate a password digest" do
+      
 
-  
+      expect(BCrypt::Password).to receive(:create).with('test123')
+    end
+  end
+
+
+
 end
