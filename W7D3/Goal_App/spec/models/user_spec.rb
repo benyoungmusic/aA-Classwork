@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  let(:test_user) { User.create(username: 'Test', password: 'test123') }
+  subject(:test_user) { User.create(username: 'Test', password: 'test123') }
   describe "Validations" do 
     it { should validate_presence_of(:username) }
     it { should validate_presence_of(:session_token) }
@@ -27,19 +27,20 @@ RSpec.describe User, type: :model do
 
 
   describe "#is_password?" do
+    user = User.find_by(username: 'test_user')
     it "should not be saved to the database" do
-      expect(test_user.password).not_to eq('test123')
+      expect(user.password).not_to eq('askldjf')
     end
     
     it "should encrypt password" do
-      test_user.is_password?('test123')
+      user.is_password?('test123')
 
       expect(BCrypt::Password).to receive(:new).with('test123')
     end
 
     context "valid password" do
       it "should return true" do
-        expect(:test_user.password?(:password)).to be true
+        expect(:test_user.is_password?(:password)).to be true
       end
     end
 
