@@ -4,6 +4,7 @@
 	align-items: center;
 	border-bottom: 2px solid black;
 	position: relative;
+	border-top: 1px solid $light-gray;
 }
 
 .language-nav {
@@ -54,7 +55,14 @@
 	}
 	li {
 		margin-left: 10px;
-		// border-right: 1px solid $light-gray;
+		border-right: 1px solid $light-gray;
+	}
+	li:last-child{
+		border-right: none;
+	}
+
+	.date{
+		padding-right: 10px;
 	}
 
 	button {
