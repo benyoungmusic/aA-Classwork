@@ -23,10 +23,19 @@
 		font-size: 10px;
 		color: $dark-gray;
 	}
+	a:hover {
+		text-decoration: underline;
+	}
+
 
 	ul {
 		display: flex;
 	}
+
+	li:first-child {
+			font-weight: bold;
+	}
+
 }
 
 .logo {
@@ -45,7 +54,7 @@
 	}
 	li {
 		margin-left: 10px;
-		border-right: 1px solid $light-gray;
+		// border-right: 1px solid $light-gray;
 	}
 
 	button {
@@ -58,6 +67,10 @@
 
 	button:hover {
 		background-color: $lightest-gray;
+	}
+
+	a:hover {
+	text-decoration: underline;
 	}
 
 	a,
