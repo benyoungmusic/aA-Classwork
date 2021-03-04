@@ -11,19 +11,19 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:username) }
   end
 
-  describe "#password?" do
-    context "valid password" do
-      it "should return true" do
-        expect(:test_user.password?(:password)).to be true
-      end
-    end
+  # describe "#password?" do
+  #   context "valid password" do
+  #     it "should return true" do
+  #       expect(:test_user.password?(:password)).to be true
+  #     end
+  #   end
 
-    context "invalid password" do
-      it "should return false" do
-        expect(:test_user.password?('123')).to be false
-      end
-    end
-  end
+  #   context "invalid password" do
+  #     it "should return false" do
+  #       expect(:test_user.password?('123')).to be false
+  #     end
+  #   end
+  # end
 
 
   describe "#is_password?" do
@@ -35,6 +35,18 @@ RSpec.describe User, type: :model do
       test_user.is_password?('test123')
 
       expect(BCrypt::Password).to receive(:new).with('test123')
+    end
+
+    context "valid password" do
+      it "should return true" do
+        expect(:test_user.password?(:password)).to be true
+      end
+    end
+
+    context "invalid password" do
+      it "should return false" do
+        expect(:test_user.password?('123')).to be false
+      end
     end
 
     
