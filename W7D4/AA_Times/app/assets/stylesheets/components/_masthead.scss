@@ -40,7 +40,9 @@
 	font-size: 11px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-
+	ul{
+		display:flex
+	}
 	li {
 		margin-left: 10px;
 		border-right: 1px solid $light-gray;
