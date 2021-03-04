@@ -39,13 +39,16 @@
     }
 
     > li:last-of-type {
-  
+      position: relative;
     }
   }
   
   i {
     font-size: 18px;
     margin: 2px;
+  }
+  li:last-of-type:hover .gear-dropdown {
+    display: block;
   }
 }
 
