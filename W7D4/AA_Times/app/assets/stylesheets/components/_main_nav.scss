@@ -1,17 +1,27 @@
 .main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 
 }
 
 .left-nav > ul,
 .right-nav > ul {
-
+  display: flex;
+  align-items: center;
 }
 
 .left-nav {
 
   > ul {
     > li {
-
+      font-size: 14;
+      text-transform: uppercase;
+      font-family: "Arial", sans-serif;
+      font-weight: bold;
+      margin: 2px;
+      padding: 7px;
+      margin-right: 15px;
     }
   }
 
@@ -25,7 +35,7 @@
   > ul {
 
     > li {
-  
+      margin: 2px;
     }
 
     > li:last-of-type {
@@ -34,11 +44,13 @@
   }
   
   i {
-
+    font-size: 18px;
+    margin: 2px;
   }
 }
 
 .left-nav > ul > li:hover,
 .right-nav > ul > li:last-of-type:hover {
+  background-color: $lightest-gray;
 
 }
