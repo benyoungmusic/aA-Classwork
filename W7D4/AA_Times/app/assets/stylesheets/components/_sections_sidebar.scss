@@ -1,6 +1,27 @@
 #sections-sidebar {
     opacity: 0;
     position: absolute;
+    font-size: 14;
+    text-transform: uppercase;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    margin: 2px;
+    padding: 7px;
+    color: black;
+    background-color: white;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+}
+
+#sections-sidebar button{
+    color: black;
+    background-color: white;
+}
+
+#sections-sidebar button:hover {
+  background-color: $light-blue;
+  border-color: $darkest-blue;
 }
 
 #sections-sidebar.expand {
@@ -18,6 +39,9 @@
     display: none;
     position: absolute;
     /* use top, left, right, bottom to position */
+    left: 110px;
+    top: 10px;
+
 }
 .dropdown:hover > ul {
     /* applies the following style to uls inside .dropdown */
