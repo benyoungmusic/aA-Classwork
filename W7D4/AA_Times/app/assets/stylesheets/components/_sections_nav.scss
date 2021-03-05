@@ -52,3 +52,10 @@
 		color: green;
 	}
 }
+
+@media all and (max-width: 1000px) {
+
+  .sectionhead {
+      display: none;
+  }
+}
