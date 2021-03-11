@@ -42,13 +42,25 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  if (pos[0] < 0 || pos[1] < 0 || pos[0] > 7 || pos[1] > 7) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 /**
  * Returns the piece at a given [x, y] position,
  * throwing an Error if the position is invalid.
  */
+
+//[[3, 4]]    [3][4]
 Board.prototype.getPiece = function (pos) {
+  if (this.isValidPos(pos)) {
+    return this.grid[pos[0]][pos[1]];
+  } else {
+    throw new Error('Not valid pos!');
+  }
 };
 
 /**
@@ -56,6 +68,12 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  let piece = this.getPiece(pos)
+  if (piece === undefined || piece.color !== color) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 /**
