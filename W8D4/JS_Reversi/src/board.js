@@ -8,7 +8,21 @@ if (typeof window === 'undefined'){
  * Returns a 2D array (8 by 8) with two black pieces at [3, 4] and [4, 3]
  * and two white pieces at [3, 3] and [4, 4]
  */
-function _makeGrid () {
+function _makeGrid() {
+  let grid = [
+    [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined],
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined],
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined], 
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined], 
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined], 
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined], 
+    [undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined], 
+    [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]];
+  grid[3][4] = new Piece("black");
+  grid[4][3] = new Piece("black");
+  grid[3][3] = new Piece("white");
+  grid[4][4] = new Piece("white");
+  return grid;
 }
 
 /**
