@@ -98,15 +98,15 @@ Board.prototype.isOccupied = function (pos) {
  */
 Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
   let nextPos = [pos[0] + dir[0], pos[1] + dir[1]];
+  if (piecesToFlip === undefined) {
+    piecesToFlip = [];
+  }
   if (!this.isValidPos(nextPos) || !this.isOccupied(nextPos) || 
-      (this.getPiece(nextPos).color === color && piecesToFlip === undefined)) {
+      (this.getPiece(nextPos).color === color && piecesToFlip === [])) {
     return [];
   }
   if (this.getPiece(nextPos).color === color) {
     return piecesToFlip;
-  }
-  if (piecesToFlip === undefined) {
-    piecesToFlip = [];
   }
   piecesToFlip.push(nextPos);
   return this._positionsToFlip(nextPos, color, dir, piecesToFlip);
@@ -119,7 +119,17 @@ Board.prototype._positionsToFlip = function (pos, color, dir, piecesToFlip) {
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
-  
+  if (!this.isValidPos(pos) || this.isOccupied(pos)) {
+    return false;
+  }
+  let value = false;
+  Board.DIRS.forEach(dir => {
+    if (this._positionsToFlip(pos, color, dir).length) {
+      value = true;
+    }
+
+  })
+  return value;
 };
 
 /**
