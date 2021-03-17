@@ -55,7 +55,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.$el = $el\n    this.game = game\n    this.setupBoard();\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let grid = $('<ul class=\"grid\"></ul>');\n\n    for(let i = 0; i < 9; i++) {\n      let cell = $(\"<li class='cell' id=\"+ i +\" ></li>\");\n      grid.append(cell);\n    }\n\n    grid.css('display', 'flex');\n    this.$el.append(grid);\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.$el = $el\n    this.game = game\n    this.setupBoard();\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let grid = $('<ul class=\"grid\"></ul>');\n\n    for(let i = 0; i < 9; i++) {\n      let cell = $(\"<li class='cell' id=\"+ i +\" data-is-clicked='false'></li>\");\n      grid.append(cell);\n    }\n\n    let cell = $(\".cell\");\n    cell.css('border-style', 'solid');\n    cell.css('border-width', '5px');\n\n    cell.on('click', () => {\n      if (!this.data('isClicked')) {\n        this.data('isClicked', true)\n      } else {\n        this.data('isClicked', false)\n      }\n    });\n\n    cell.on('hover', () => {\n      if (!this.data('isClicked')) {\n        cell.css('background-color', 'yellow')\n      }\n    });\n\n    grid.css('display', 'flex');\n    grid.css('flex-wrap', 'wrap');\n    grid.css('width', '600px');\n    this.$el.append(grid);\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 
