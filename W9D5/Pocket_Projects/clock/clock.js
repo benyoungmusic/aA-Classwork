@@ -1,3 +1,4 @@
+import warmUp from "./warmup";
 class Clock {
   constructor() {
     // 1. Create a Date object.
@@ -53,4 +54,6 @@ class Clock {
   }
 }
 
+let clockElement = document.getElementById("clock");
 const clock = new Clock();
+
