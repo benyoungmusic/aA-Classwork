@@ -8,13 +8,40 @@ html {
 h1 {
   color: #F0F2EF;
   font-family: 'helvetica neue';
-  font-size: 20px;
-  font-weight: 200;
+  font-size: 40px;
+  font-weight: 600;
+  text-shadow: 7px 7px 5px black;
+}
+
+.clock-holder {
+  padding: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 .header {
   display: flex;
   justify-content: space-around;
+}
+
+.drop-down-dog-list li a{
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
+  color: blue;
+}
+
+.drop-down-dog-nav {
+  font-size: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.hidden {
+  display: none;
 }
 
 .welcome {

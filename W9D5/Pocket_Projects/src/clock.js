@@ -21,7 +21,7 @@ class Clock {
     const timeString = [this.hours, this.minutes, this.seconds].join(":");
 
     // Use console.log to print it.
-    console.log(timeString);
+    // console.log(timeString);
     htmlGenerator(timeString, clockElement);
   }
 
