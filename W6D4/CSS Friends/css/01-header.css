@@ -1,0 +1,69 @@
+/* PHASE 1: Header */
+
+
+body {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25;   
+}
+
+header *{
+    /* display: flex; */
+
+}
+
+
+.header-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: red;
+    color: white;
+    align-items: center;
+
+    background-color: teal;
+    
+}
+
+.header-list {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+    color:white;
+    position: relative;
+    flex 1;
+
+}
+
+.header-list li {
+    text-decoration: none;
+    border: 1px solid white;
+
+}
+
+li a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+}
+
+.nav-home {
+    padding-left: 100px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+}
+
+.notification-drop {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: black;
+
+}
+
+.notifications:hover .notification-drop *{
+    display: block;
+}

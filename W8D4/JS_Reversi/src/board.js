@@ -139,6 +139,9 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  // if this.validMove(pos, color) {
+
+  // } else throw new Error("Invalid move!")
 };
 
 /**

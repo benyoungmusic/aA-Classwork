@@ -1,0 +1,45 @@
+/* PHASE 0: Sidebar */
+.profile-picture {
+    display: block;
+    margin-top: -120px;
+    position: relative;
+
+}
+
+/* .profile-picture div{
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    position: absolute;
+    transform: rotate(.875turn);
+    background-color: rgb(10, 231, 110);
+    padding: 4px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+} */
+
+.profile-info {
+
+}
+
+.profile-nav {
+    margin: 3px;
+}
+.profile-nav li {
+    border-bottom: 1px solid lightgray;
+    padding: 4px;
+}
+
+.profile-nav li:first-child {
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+}
+
+.profile-nav li:last-child {
+    margin-bottom: 20px;
+}
+
+.profile-nav a {
+    font-weight: bold;
+}

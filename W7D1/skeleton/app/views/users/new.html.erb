@@ -1,0 +1,6 @@
+   <h1>New User Form</h1>
+   <%= render 'form', type: 'new', user: @user %>
+
+<!--This is where the partial variables are declared and assigned.-->
+<!--The key for user: is the local variable in the partial, @user is going to be the value, which is the model instance variable-->
+<!--It's not a symbol in the partial because rails uses its magic to make a variable for you.-->

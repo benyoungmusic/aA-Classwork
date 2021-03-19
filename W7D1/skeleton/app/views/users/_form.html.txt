@@ -1,0 +1,9 @@
+<% if type == 'new' %>
+    <% action_url = users_url %>
+    <!--users_url only corresponds to POST on our routes-->
+    <% button_text = 'Create User' %>
+
+
+<% else %>
+    <% action_url = user_url(user) %>
+    <!--PATCH?-->
