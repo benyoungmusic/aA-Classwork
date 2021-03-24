@@ -3,7 +3,14 @@ import React from "react";
 export default class Tile extends React.Component {
   constructor(props) {
     super(props);
-    this.tileStatus = this.tileStatus.bind(this)
+    this.tileStatus = this.tileStatus.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    let flagged = false;
+    if (event.key === "alt") flagged = true;
+    this.props.updateGame(this.props.tile, flagged);
   }
 
   tileStatus(tile) {
@@ -31,8 +38,9 @@ export default class Tile extends React.Component {
       tileClass += " tile"
 
     return (
-      <div className={tileClass}>
+      <div className={tileClass} onClick={this.handleClick}>
         {marker}
+        
       </div>
     )
   }

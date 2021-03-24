@@ -146,21 +146,43 @@ var Game = /*#__PURE__*/function (_React$Component) {
       board: board
     };
     _this.updateGame = _this.updateGame.bind(_assertThisInitialized(_this));
+    _this.wonOrLost = _this.wonOrLost.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Game, [{
     key: "updateGame",
-    value: function updateGame() {}
+    value: function updateGame(tile, flagged) {
+      if (flagged) {
+        tile.toggleFlag();
+      } else if (!flagged) {
+        tile.explore();
+      }
+
+      this.setState({
+        board: this.state.board
+      });
+    }
+  }, {
+    key: "wonOrLost",
+    value: function wonOrLost() {
+      if (this.state.board.lost()) {
+        return alert("You lost");
+      } else if (this.state.board.won()) {
+        return alert("You won");
+      }
+    }
   }, {
     key: "render",
     value: function render() {
+      var endState;
+      if (this.wonOrLost()) endState = this.wonOrLost();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "board"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_board_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
         board: this.state.board,
         updateGame: this.updateGame
-      }));
+      }), endState);
     }
   }]);
 
@@ -230,10 +252,18 @@ var Tile = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.tileStatus = _this.tileStatus.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Tile, [{
+    key: "handleClick",
+    value: function handleClick(event) {
+      var flagged = false;
+      if (event.key === "alt") flagged = true;
+      this.props.updateGame(this.props.tile, flagged);
+    }
+  }, {
     key: "tileStatus",
     value: function tileStatus(tile) {
       var bombCount;
@@ -266,7 +296,8 @@ var Tile = /*#__PURE__*/function (_React$Component) {
 
       tileClass += " tile";
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: tileClass
+        className: tileClass,
+        onClick: this.handleClick
       }, marker);
     }
   }]);
