@@ -28,7 +28,7 @@ export default class Board extends React.Component {
     render () {
         
         return (
-           <div> 
+           <div className="rows"> 
                {this.boardRender()} 
             </div>
         )

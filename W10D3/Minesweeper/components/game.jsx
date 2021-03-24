@@ -17,7 +17,7 @@ export default class Game extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="board">
                 <Board board={this.state.board} updateGame={this.updateGame} />
             </div>
         )
