@@ -37,7 +37,17 @@ eval("\nconst dogs = {\n  \"Corgi\": \"https://www.akc.org/dog-breeds/cardigan-w
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drop_down */ \"./src/drop_down.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_drop_down__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n//# sourceURL=webpack://pocket_projects/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drop_down */ \"./src/drop_down.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_drop_down__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todo_list */ \"./src/todo_list.js\");\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_todo_list__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n\n//# sourceURL=webpack://pocket_projects/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/todo_list.js":
+/*!**************************!*\
+  !*** ./src/todo_list.js ***!
+  \**************************/
+/***/ (() => {
+
+eval("// const todos = localStorage.getItem(JSON.parse(todos));\nconst todos = [];\nconsole.log(localStorage)\nconst ul = document.querySelector(\".todos\");\nconst form = document.querySelector(\".add-todo-form\");\n\nconst addTodo = () => {\n    let input = document.getElementsByName(\"add-todo\"); \n    let todo = {done: false, value: input[0].value};\n    todos.push(todo);\n    localStorage.clear();\n    localStorage.setItem('todos', JSON.stringify(todos));\n    input.value = \"\";\n    populateList();\n};\n\nconst populateList = () => {\n    let children = ul.children;\n    while (children.length > 0) {\n        ul.removeChild(ul.firstChild)\n    }\n    todos.map(todo => {\n        let label = document.createElement(\"label\");\n        let checkbox = document.createElement(\"input\");\n        let li = document.createElement(\"li\");\n\n        checkbox.type = \"checkbox\";\n        checkbox.checked = todo.done;\n        label.innerText = todo.value;\n\n        li.appendChild(checkbox);\n        li.appendChild(label);\n        ul.appendChild(li);\n    \n    });\n    console.log(todos)\n};\n\nform.addEventListener(\"submit\", e => {\n\n    e.preventDefault();\n    console.log('hello');\n    addTodo();\n});\n\n\n//# sourceURL=webpack://pocket_projects/./src/todo_list.js?");
 
 /***/ }),
 
