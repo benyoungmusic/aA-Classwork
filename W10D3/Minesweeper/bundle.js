@@ -63,6 +63,7 @@ var Board = /*#__PURE__*/function (_React$Component) {
       var board = this.props.board;
       return board.grid.map(function (subArr, idx1) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "subRow",
           key: idx1
         }, subArr.map(function (tile, idx2) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tile_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {

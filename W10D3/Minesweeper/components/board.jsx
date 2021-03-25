@@ -12,7 +12,7 @@ export default class Board extends React.Component {
         const board = this.props.board;
         return board.grid.map((subArr, idx1) => {
             return (
-                <div key={idx1}> 
+                <div className="subRow" key={idx1}> 
                     {subArr.map((tile, idx2) => {
                         return (
                             <Tile tile={tile} 
