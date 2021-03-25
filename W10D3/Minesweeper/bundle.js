@@ -142,7 +142,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Game);
 
     _this = _super.call(this, props);
-    var board = new _minesweeper_js__WEBPACK_IMPORTED_MODULE_1__.Board(5, 3);
+    var board = new _minesweeper_js__WEBPACK_IMPORTED_MODULE_1__.Board(10, 10);
     _this.state = {
       board: board
     };
@@ -261,7 +261,7 @@ var Tile = /*#__PURE__*/function (_React$Component) {
     key: "handleClick",
     value: function handleClick(event) {
       var flagged = false;
-      if (event.key === "alt") flagged = true;
+      if (event.altKey) flagged = true;
       this.props.updateGame(this.props.tile, flagged);
     }
   }, {

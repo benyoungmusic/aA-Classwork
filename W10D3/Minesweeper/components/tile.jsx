@@ -9,7 +9,7 @@ export default class Tile extends React.Component {
 
   handleClick(event) {
     let flagged = false;
-    if (event.key === "alt") flagged = true;
+    if (event.altKey) flagged = true;
     this.props.updateGame(this.props.tile, flagged);
   }
 

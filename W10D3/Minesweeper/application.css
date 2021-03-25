@@ -50,11 +50,6 @@ table {
 
 .rows {
     display: flex;
-
-}
-
-.subRows {
-    display: flex;
 }
 
 .tile {
@@ -64,15 +59,27 @@ table {
     height: 30px;
     text-align: center;
     line-height: normal;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .covered.tile {
     border-style: outset; 
+    display: flex;
 }
 
 .explored.tile {
     border-style: inset;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+    display: flex;
+}
+
+.flagged.tile {
+    border-style: inset;
+    display: flex;
+}
+
+.bomb.tile {
+    border-style: inset;
+    display: flex;
 }
